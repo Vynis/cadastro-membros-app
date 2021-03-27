@@ -1,0 +1,184 @@
+<mat-toolbar color="primary">
+  <span class="title-center">CADASTRO DE MEMBROS - IGREJA DE CRISTO</span>
+</mat-toolbar>
+<br>
+<div class="d-flex justify-content-center">
+  <mat-card style="width: 800px;">
+    <div class="d-flex justify-content-end">(*) Campos obrigatórios</div>
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <mat-form-field appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input matInput placeholder="Nome completo" required>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Data de Nascimento</mat-label>
+          <input matInput placeholder="Data de Nascimento" required>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-label>Sexo*</mat-label><br>
+        <mat-radio-group aria-label="Selecione a opção">
+          <mat-radio-button value="M">Masculino</mat-radio-button>
+          <mat-radio-button value="F">Feminino</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6"> 
+        <mat-form-field appearance="outline">
+          <mat-label>Telefone Fixo</mat-label>
+          <input matInput placeholder="Telefon Fixo">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Celular</mat-label>
+          <input matInput placeholder="Celular" required>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Estado Civil</mat-label>
+          <mat-select  required>
+            <mat-option value="CA">Casado</mat-option>
+            <mat-option value="UE">União estavel</mat-option>
+            <mat-option value="SO">Solteiro</mat-option>
+            <mat-option value="SE">Separado</mat-option>
+            <mat-option value="DI">Divorciado</mat-option>
+            <mat-option value="VI">Viúvo</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" required>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+    <div style="padding-top: 15px;" class="row">
+      <div class="col-md-12">
+        <h2>:: Endereço</h2>
+      </div>
+    </div>
+    <mat-divider></mat-divider><br>
+
+    <div class="row">
+      <div class="col-md-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Cep</mat-label>
+          <input matInput placeholder="Cep" required>
+        </mat-form-field>
+      </div>
+      <div class="col-md-8">
+        <mat-form-field appearance="outline">
+          <mat-label>Rua/Avenida</mat-label>
+          <input matInput placeholder="rua" required>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Numero</mat-label>
+          <input matInput placeholder="Numero">
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Bairro</mat-label>
+          <input matInput placeholder="Bairro" required>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Cidade</mat-label>
+          <input matInput placeholder="Cidade" required>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Estado</mat-label>
+          <mat-select  required>
+            <mat-option value="CA">Goias</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-8">
+        <mat-form-field appearance="outline">
+          <mat-label>Complemento</mat-label>
+          <input matInput placeholder="Complemento" required>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+    <div style="padding-top: 15px;" class="row">
+      <div class="col-md-12">
+        <h2>:: Informações sobre Igreja</h2>
+      </div>
+    </div>
+    <mat-divider></mat-divider><br>
+
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Congregação</mat-label>
+          <mat-select  required>
+            <mat-option value="1">Sede - Fonte Nova</mat-option>
+            <mat-option value="2">Campus Redenção</mat-option>
+            <mat-option value="3">Campus Primavera</mat-option>
+            <mat-option value="4">Campus Goianira</mat-option>
+            <mat-option value="5">Campus Nunes de Morais</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Data Inserção na Igreja</mat-label>
+          <input matInput (dateInput)="buscar($event)" [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Como chegou na igreja?</mat-label>
+          <mat-select  required>
+            <mat-option value="1">Veio de outra igreja</mat-option>
+            <mat-option value="2">Converteu aqui</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Data da Conversão</mat-label>
+          <input matInput (dateInput)="buscar($event)" [matDatepicker]="picker2">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+
+  </mat-card>
+</div>
