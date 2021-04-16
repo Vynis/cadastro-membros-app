@@ -16,9 +16,14 @@ import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatButtonModule} from '@angular/material/button';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { DateAdapter, MatNativeDateModule, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { PickDateAdapter } from './core/utils/custom-data-picker';
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
+import { HttpClientModule } from '@angular/common/http';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [	
@@ -40,7 +45,12 @@ import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS, MomentDateAda
     MatSelectModule,
     MatDividerModule,
     MatDatepickerModule,
-    MatNativeDateModule 
+    MatNativeDateModule ,
+    MatCheckboxModule,
+    MatButtonModule,
+    HttpClientModule,
+    MatProgressSpinnerModule,
+    FlexLayoutModule 
   ],
   providers: [
     MatDatepickerModule,

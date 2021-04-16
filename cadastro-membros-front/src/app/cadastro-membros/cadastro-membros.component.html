@@ -1,29 +1,100 @@
-<mat-toolbar color="primary">
-  <span class="title-center">CADASTRO DE MEMBROS - IGREJA DE CRISTO</span>
-</mat-toolbar>
-<br>
-<div class="d-flex justify-content-center">
-  <mat-card style="width: 800px;">
+
+
+<style>
+  :host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 8px 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  .toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .content {
+    display: flex;
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    max-width: 960px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+</style>
+
+<!-- Toolbar -->
+<div class="toolbar" style="text-align: center;" role="banner">
+
+  <h3>CADASTRO DE MEMBROS - IGREJA DE CRISTO</h3>
+
+</div>
+
+<div class="content" role="main">
+  <mat-card style="width: 100%;">
+    <form [formGroup]="formulario">
     <div class="d-flex justify-content-end">(*) Campos obrigatórios</div>
     <br>
+
     <div class="row">
       <div class="col-md-12">
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" fxFlex>
           <mat-label>Nome</mat-label>
-          <input matInput placeholder="Nome completo" required>
+          <input matInput placeholder="Nome completo" formControlName="nome" required>
+          <mat-error>
+            Campo é
+            <strong>obrigatório</strong>
+          </mat-error>
         </mat-form-field>
       </div>
     </div>
+
     <div class="row">
       <div class="col-md-6">
         <mat-form-field appearance="outline">
           <mat-label>Data de Nascimento</mat-label>
-          <input matInput placeholder="Data de Nascimento" required>
+          <input matInput placeholder="Ex: (00/00/0000)" (dateInput)="buscar($event)" [matDatepicker]="picker4" formControlName="dataNascimento" required>
+          <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+          <mat-datepicker #picker4></mat-datepicker>
+          <mat-error>
+            Campo é
+            <strong>obrigatório</strong>
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="col-md-6">
         <mat-label>Sexo*</mat-label><br>
-        <mat-radio-group aria-label="Selecione a opção">
+        <mat-radio-group aria-label="Selecione a opção" formControlName="sexo">
           <mat-radio-button value="M">Masculino</mat-radio-button>
           <mat-radio-button value="F">Feminino</mat-radio-button>
         </mat-radio-group>
@@ -34,13 +105,17 @@
       <div class="col-md-6"> 
         <mat-form-field appearance="outline">
           <mat-label>Telefone Fixo</mat-label>
-          <input matInput placeholder="Telefon Fixo">
+          <input matInput placeholder="Telefon Fixo" formControlName="telefoneFixo">
         </mat-form-field>
       </div>
       <div class="col-md-6">
         <mat-form-field appearance="outline">
           <mat-label>Celular</mat-label>
-          <input matInput placeholder="Celular" required>
+          <input matInput placeholder="Celular" required formControlName="telefoneCelular">
+          <mat-error>
+            Campo é
+            <strong>obrigatório</strong>
+          </mat-error>
         </mat-form-field>
       </div>
     </div>
@@ -49,7 +124,7 @@
       <div class="col-md-6">
         <mat-form-field appearance="outline">
           <mat-label>Estado Civil</mat-label>
-          <mat-select  required>
+          <mat-select formControlName="estadoCivil"  required>
             <mat-option value="CA">Casado</mat-option>
             <mat-option value="UE">União estavel</mat-option>
             <mat-option value="SO">Solteiro</mat-option>
@@ -57,13 +132,25 @@
             <mat-option value="DI">Divorciado</mat-option>
             <mat-option value="VI">Viúvo</mat-option>
           </mat-select>
+          <mat-error>
+            Campo é
+            <strong>obrigatório</strong>
+          </mat-error>
         </mat-form-field>
       </div>
 
       <div class="col-md-6">
         <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
-          <input matInput placeholder="Email" required>
+          <input matInput formControlName="email" placeholder="Email" required>
+          <mat-error *ngIf="formulario.get('email').hasError('required')  && formulario.get('email').touched">
+            Campo é
+            <strong>obrigatório</strong>
+          </mat-error>
+          <mat-error *ngIf="formulario.get('email').hasError('email')  && formulario.get('email').touched">
+            Email
+            <strong>invalido</strong>
+          </mat-error>
         </mat-form-field>
       </div>
     </div>
@@ -80,13 +167,21 @@
       <div class="col-md-4">
         <mat-form-field appearance="outline">
           <mat-label>Cep</mat-label>
-          <input matInput placeholder="Cep" required>
+          <input matInput placeholder="74000000" (blur)="consultaCEP()" formControlName="cep" required>
+          <mat-error>
+            Campo é
+            <strong>obrigatório</strong>
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="col-md-8">
         <mat-form-field appearance="outline">
           <mat-label>Rua/Avenida</mat-label>
-          <input matInput placeholder="rua" required>
+          <input matInput placeholder="rua" formControlName="ruaAvenida" required>
+          <mat-error>
+            Campo é
+            <strong>obrigatório</strong>
+          </mat-error>
         </mat-form-field>
       </div>
     </div>
@@ -95,19 +190,27 @@
       <div class="col-md-4">
         <mat-form-field appearance="outline">
           <mat-label>Numero</mat-label>
-          <input matInput placeholder="Numero">
+          <input matInput placeholder="Numero" formControlName="numero">
         </mat-form-field>
       </div>
       <div class="col-md-4">
         <mat-form-field appearance="outline">
           <mat-label>Bairro</mat-label>
-          <input matInput placeholder="Bairro" required>
+          <input matInput placeholder="Bairro" formControlName="bairro" required>
+          <mat-error>
+            Campo é
+            <strong>obrigatório</strong>
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="col-md-4">
         <mat-form-field appearance="outline">
           <mat-label>Cidade</mat-label>
-          <input matInput placeholder="Cidade" required>
+          <input matInput placeholder="Cidade" formControlName="cidade" required>
+          <mat-error>
+            Campo é
+            <strong>obrigatório</strong>
+          </mat-error>
         </mat-form-field>
       </div>
     </div>
@@ -116,15 +219,19 @@
       <div class="col-md-4">
         <mat-form-field appearance="outline">
           <mat-label>Estado</mat-label>
-          <mat-select  required>
-            <mat-option value="CA">Goias</mat-option>
+          <mat-select formControlName="estado"  required>
+            <mat-option *ngFor="let estado of listaestadosBrasileiros" [value]="estado.sigla" >{{ estado.nome }}</mat-option>
           </mat-select>
+          <mat-error>
+            Campo é
+            <strong>obrigatório</strong>
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="col-md-8">
         <mat-form-field appearance="outline">
           <mat-label>Complemento</mat-label>
-          <input matInput placeholder="Complemento" required>
+          <input matInput placeholder="Complemento" formControlName="complemento">
         </mat-form-field>
       </div>
     </div>
@@ -132,7 +239,7 @@
     <mat-divider></mat-divider>
     <div style="padding-top: 15px;" class="row">
       <div class="col-md-12">
-        <h2>:: Informações sobre Igreja</h2>
+        <h2>:: Informações complementares</h2>
       </div>
     </div>
     <mat-divider></mat-divider><br>
@@ -141,21 +248,25 @@
       <div class="col-md-6">
         <mat-form-field appearance="outline">
           <mat-label>Congregação</mat-label>
-          <mat-select  required>
-            <mat-option value="1">Sede - Fonte Nova</mat-option>
-            <mat-option value="2">Campus Redenção</mat-option>
-            <mat-option value="3">Campus Primavera</mat-option>
-            <mat-option value="4">Campus Goianira</mat-option>
-            <mat-option value="5">Campus Nunes de Morais</mat-option>
+          <mat-select formControlName="congregacaoId"  required>
+            <mat-option *ngFor="let lista of listaCongregacoes" [value]="lista.id">{{lista.nome}}</mat-option>
           </mat-select>
+          <mat-error>
+            Campo é
+            <strong>obrigatório</strong>
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="col-md-6">
         <mat-form-field appearance="outline">
           <mat-label>Data Inserção na Igreja</mat-label>
-          <input matInput (dateInput)="buscar($event)" [matDatepicker]="picker">
+          <input matInput formControlName="dataInsercaoIgreja"  (dateInput)="buscar($event)" [matDatepicker]="picker" required>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
+          <mat-error>
+            Campo é
+            <strong>obrigatório</strong>
+          </mat-error>
         </mat-form-field>
       </div>
     </div>
@@ -164,21 +275,151 @@
       <div class="col-md-6">
         <mat-form-field appearance="outline">
           <mat-label>Como chegou na igreja?</mat-label>
-          <mat-select  required>
+          <mat-select formControlName="comoChegouIgreja"  required>
             <mat-option value="1">Veio de outra igreja</mat-option>
             <mat-option value="2">Converteu aqui</mat-option>
           </mat-select>
+          <mat-error>
+            Campo é
+            <strong>obrigatório</strong>
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="col-md-6">
         <mat-form-field appearance="outline">
           <mat-label>Data da Conversão</mat-label>
-          <input matInput (dateInput)="buscar($event)" [matDatepicker]="picker2">
+          <input matInput formControlName="dataConversao"  (dateInput)="buscar($event)" [matDatepicker]="picker2" required>
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
           <mat-datepicker #picker2></mat-datepicker>
+          <mat-error>
+            Campo é
+            <strong>obrigatório</strong>
+          </mat-error>
         </mat-form-field>
       </div>
     </div>
 
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Batismo?</mat-label>
+          <mat-select (chage)="validacaoBatismo()" formControlName="ehBatizado" required>
+            <mat-option value="S">Sim</mat-option>
+            <mat-option value="N">Não</mat-option>
+          </mat-select>
+          <mat-error>
+            Campo é
+            <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Data do Batismo</mat-label>
+          <input matInput formControlName="dataBatismo" (dateInput)="buscar($event)" [matDatepicker]="picker3" [required]="formulario.controls.ehBatizado.value == 'S'">
+          <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+          <mat-datepicker #picker3></mat-datepicker>
+          <mat-error>
+            Campo é
+            <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Faz parte de algum pequeno grupo?</mat-label>
+          <mat-select (change)="validaFazPartePequenoGrupo()" formControlName="fazParteGrupoPequeno" required>
+            <mat-option value="S">Sim</mat-option>
+            <mat-option value="N">Não</mat-option>
+          </mat-select>
+          <mat-error>
+            Campo é
+            <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Qual?</mat-label>
+          <input matInput formControlName="qualGrupoPequeno"  placeholder="Qual?" [required]="formulario.controls.fazParteGrupoPequeno.value == 'S'">
+          <mat-error>
+            Campo é
+            <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Faz parte de algum ministério?</mat-label>
+          <mat-select (change)="validaFazParteMinisteririo()" formControlName="fazParteMinisterio" required>
+            <mat-option value="S">Sim</mat-option>
+            <mat-option value="N">Não</mat-option>
+          </mat-select>
+          <mat-error>
+            Campo é
+            <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Qual?</mat-label>
+          <input matInput formControlName="qualMinisterio" placeholder="Qual?" [required]="formulario.controls.fazParteMinisterio.value == 'S'">
+          <mat-error>
+            Campo é
+            <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-12">
+        <mat-form-field appearance="outline">
+          <mat-label>De quem você recebe pastoreio mais próximo?</mat-label>
+          <input matInput formControlName="deQuemRecebeuPastoreiro" placeholder="De quem recebe pastoreio mais próximo?" required>
+          <mat-error>
+            Campo é
+            <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <mat-checkbox formControlName="termo" >
+          <span class="wrap-mat-radio-label">Como membro me comprometo: Buscar conhecer e zelar pela visão da igreja local. Assim me inserir no processo de
+          de membresia. Li e concordo</span></mat-checkbox>
+      </div>
+    </div>
+
+    <mat-card-footer>
+      <div class="d-flex flex-row-reverse">
+        <div *ngIf="carregandoDados" class="p-2">
+          <mat-spinner diameter="50"></mat-spinner>
+        </div>
+        <div class="p-2">
+          <button (click)="submit()" [disabled]="carregandoDados" mat-raised-button color="primary" style="width: 150px;" >
+            Enviar
+          </button>
+        </div>
+      </div>
+    </mat-card-footer>
+
+    </form>
   </mat-card>
+
+
 </div>
+
+
+
+
+
+<router-outlet></router-outlet>

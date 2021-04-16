@@ -1,0 +1,11 @@
+C:\Users\vynis\Documents\www\igreja\cadastro-membros-app\cadastro-membros-api\CadastroMembroApi\obj\Release\netcoreapp3.1\PubTmp\Out\CadastroMembroApi.exe
+C:\Users\vynis\Documents\www\igreja\cadastro-membros-app\cadastro-membros-api\CadastroMembroApi\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.Development.json
+C:\Users\vynis\Documents\www\igreja\cadastro-membros-app\cadastro-membros-api\CadastroMembroApi\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.json
+C:\Users\vynis\Documents\www\igreja\cadastro-membros-app\cadastro-membros-api\CadastroMembroApi\obj\Release\netcoreapp3.1\PubTmp\Out\CadastroMembroApi.dll
+C:\Users\vynis\Documents\www\igreja\cadastro-membros-app\cadastro-membros-api\CadastroMembroApi\obj\Release\netcoreapp3.1\PubTmp\Out\CadastroMembroApi.deps.json
+C:\Users\vynis\Documents\www\igreja\cadastro-membros-app\cadastro-membros-api\CadastroMembroApi\obj\Release\netcoreapp3.1\PubTmp\Out\CadastroMembroApi.runtimeconfig.json
+C:\Users\vynis\Documents\www\igreja\cadastro-membros-app\cadastro-membros-api\CadastroMembroApi\obj\Release\netcoreapp3.1\PubTmp\Out\CadastroMembroApi.pdb
+C:\Users\vynis\Documents\www\igreja\cadastro-membros-app\cadastro-membros-api\CadastroMembroApi\obj\Release\netcoreapp3.1\PubTmp\Out\Microsoft.OpenApi.dll
+C:\Users\vynis\Documents\www\igreja\cadastro-membros-app\cadastro-membros-api\CadastroMembroApi\obj\Release\netcoreapp3.1\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\vynis\Documents\www\igreja\cadastro-membros-app\cadastro-membros-api\CadastroMembroApi\obj\Release\netcoreapp3.1\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\vynis\Documents\www\igreja\cadastro-membros-app\cadastro-membros-api\CadastroMembroApi\obj\Release\netcoreapp3.1\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll

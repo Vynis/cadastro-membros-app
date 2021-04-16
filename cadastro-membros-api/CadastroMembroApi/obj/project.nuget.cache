@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "I0C5fWb88DkQCNd9fFGZ1EY8AwHNMOxNA5fTZ4j5NGyUnriJnns++sCrp5yY8lwp6iuyDc7l5fusDqHsqw1tVQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\vynis\\Documents\\www\\igreja\\cadastro-membros-app\\cadastro-membros-api\\CadastroMembroApi\\CadastroMembroApi.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\vynis\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\vynis\\.nuget\\packages\\microsoft.openapi\\1.1.4\\microsoft.openapi.1.1.4.nupkg.sha512",
+    "C:\\Users\\vynis\\.nuget\\packages\\swashbuckle.aspnetcore\\5.5.1\\swashbuckle.aspnetcore.5.5.1.nupkg.sha512",
+    "C:\\Users\\vynis\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.5.1\\swashbuckle.aspnetcore.swagger.5.5.1.nupkg.sha512",
+    "C:\\Users\\vynis\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.5.1\\swashbuckle.aspnetcore.swaggergen.5.5.1.nupkg.sha512",
+    "C:\\Users\\vynis\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.5.1\\swashbuckle.aspnetcore.swaggerui.5.5.1.nupkg.sha512",
+    "C:\\Users\\vynis\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.13\\microsoft.netcore.app.host.win-x64.3.1.13.nupkg.sha512"
+  ],
+  "logs": []
+}

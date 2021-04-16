@@ -1,11 +1,15 @@
-.title-center {
-    flex: 1 1 auto;
-  }
+// .title-center {
+//     flex: 1 1 auto;
+//   }
 
 mat-form-field {
     width: 100%;
 }
 
-.mat-radio-button ~ .mat-radio-button {
-    margin-left: 16px;
+// .mat-radio-button ~ .mat-radio-button {
+//     margin-left: 16px;
+//   }
+
+  .wrap-mat-radio-label {
+    white-space: normal;
   }
