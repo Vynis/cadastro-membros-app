@@ -1,3 +1,4 @@
+import { element } from 'protractor';
 import { MembroService } from './../core/services/membro.service';
 import { MembroModel } from './../core/models/membro.model';
 import { DatePipe } from '@angular/common';
@@ -67,7 +68,8 @@ export class CadastroMembrosComponent implements OnInit {
       fazParteMinisterio: ['', [Validators.required]],
       qualMinisterio: [''],
       deQuemRecebeuPastoreiro: ['', [Validators.required]],
-      termo: ['', Validators.required]
+      termo: ['', Validators.required],
+      possuiEmail: [false]
     })
   }
 
@@ -153,6 +155,7 @@ export class CadastroMembrosComponent implements OnInit {
     _newMembro.fazParteMinisterio = controls.fazParteMinisterio.value;
     _newMembro.qualMinisterio = controls.qualMinisterio.value;
     _newMembro.deQuemRecebeuPastoreiro = controls.deQuemRecebeuPastoreiro.value;
+    _newMembro.possuiEmail = !controls.possuiEmail.value;
 
     return _newMembro;
   }
@@ -220,6 +223,22 @@ export class CadastroMembrosComponent implements OnInit {
 
       })
     }
+  }
+
+  eventoPosuiEmail() {
+    let controls = this.formulario.controls;
+
+    if (controls.possuiEmail.value === false) {
+      controls.email.setValidators([Validators.required,Validators.email]);
+      controls.email.enable();
+    }
+    else {
+      controls.email.clearValidators();
+      controls.email.setValue('');
+      controls.email.disable();
+    }
+
+    controls.email.updateValueAndValidity();
   }
 
 }

@@ -24,4 +24,5 @@ export class MembroModel {
     fazParteMinisterio: string;
     qualMinisterio: string;
     deQuemRecebeuPastoreiro: string;
+    possuiEmail: boolean;
 }
